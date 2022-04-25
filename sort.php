@@ -3,7 +3,7 @@ if (isset($_POST['sort'])) :
     require_once 'connect.php';
     $sort = $_POST['sort'];
 
-    $query = mysqli_query($conn, "SELECT * FROM fakultas ORDER BY fakultas " . $sort . "");
+    $query = mysqli_query($conn, "SELECT * FROM fakultas ORDER BY animo " . $sort . "");
     $n = 1;
     while ($row = mysqli_fetch_object($query)) :
 ?>
