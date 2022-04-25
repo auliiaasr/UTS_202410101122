@@ -35,11 +35,15 @@ $query = mysqli_query($conn, "SELECT * FROM fakultas");
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fakultas</th>
-                        <th scope="col">Jumlah Animo</th>
+                        <th scope="col">
+                            <button type="button" class="btn btn-link text-decoration-none text-dark fw-bold" id="sort">
+                                <i class="fas fa-sort-alpha-down me-1 text-muted"></i> Jumlah Animo
+                            </button>
+                        </th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="content">
                     <?php
                     // fetch as array
                     $n = 1;
@@ -63,6 +67,25 @@ $query = mysqli_query($conn, "SELECT * FROM fakultas");
     </div>
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sort').on('change', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'sort.php',
+                    data: {
+                        sort: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
