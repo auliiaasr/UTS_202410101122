@@ -28,6 +28,13 @@ $query = mysqli_query($conn, "SELECT * FROM fakultas");
         </div>
 
         <div class="p-5 shadow p-3 mb-5 bg-white rounded">
+            <div class="col-3">
+                <select class="form-select" id="sort">
+                    <option selected>Urutkan berdasar Jumlah Animo</option>
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
 
             <!-- table -->
             <table class="table table-striped">
@@ -35,11 +42,7 @@ $query = mysqli_query($conn, "SELECT * FROM fakultas");
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Fakultas</th>
-                        <th scope="col">
-                            <button type="button" class="btn btn-link text-decoration-none text-dark fw-bold" id="sort">
-                                <i class="fas fa-sort-alpha-down me-1 text-muted"></i> Jumlah Animo
-                            </button>
-                        </th>
+                        <th scope="col">Jumlah Animo</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
